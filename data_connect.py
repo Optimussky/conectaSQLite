@@ -9,22 +9,22 @@ if conn:
     # Crear un cursor para ejecutar comandos SQL
     cursor = conn.cursor()
 
-# Crear la tabla de categorías
-# cursor.execute('''CREATE TABLE categorias (
-#                     idCategoria INTEGER PRIMARY KEY AUTOINCREMENT,
-#                     categoria TEXT
-#                 )''')
+    #Crear la tabla de categorías
+    cursor.execute('''CREATE TABLE IF NOT EXISTS categorias (
+                        idCategoria INTEGER PRIMARY KEY AUTOINCREMENT,
+                        categoria TEXT
+                    )''')
 
-#Crear la tabla de registro
-# cursor.execute('''CREATE TABLE registro (
-#                     registro_id INTEGER PRIMARY KEY AUTOINCREMENT,
-#                     registro TEXT,
-#                     fechaRegistro TEXT,
-#                     fechaModificacion TEXT,
-#                     estatus TEXT,
-# 		    FOREIGN KEY (categoria_id) 
-# 	            REFERENCES categoria (categoria_id)
-#                 )''')
+    #Crear la tabla de registro
+    cursor.execute('''CREATE TABLE IF NOT EXISTS registro (
+                        registro_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        registro TEXT,
+                        fechaRegistro TEXT,
+                        fechaModificacion TEXT,
+                        estatus TEXT,
+    		    FOREIGN KEY (categoria_id) 
+    	            REFERENCES categoria (categoria_id)
+                    )''')
 
 else:
     # Cerrar la conexión
